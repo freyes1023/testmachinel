@@ -1,0 +1,155 @@
+<section *ngIf="dataFormatted.length">
+    <div class="mb-3 mt-3 row align-items-center calc">
+      <pre>Calcula un valor para la variable 2</pre>
+      <div class="col-11 align-items-center">
+        <div class=" row align-items-center">
+          <div class="col-4">
+            <pre for="" class="form-label"> Variable 1</pre>
+            <input type="number" class="form-control" name="inputName" [(ngModel)]="CalcColumnX" placeholder="00" (blur)="calculateYSimple()">
+          </div>
+          <div class="col-4">
+            <pre for="" class="form-label"> Variable 2</pre>
+            <input type="number" class="form-control" name="inputName" [(ngModel)]="CalcColumnY"  [readOnly]="true" placeholder="00">
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </section>
+<section>
+    <div class="table-responsive">
+        <table class="table table-striped-columns
+        table-hover	
+        table-borderless
+        table-primary
+        align-middle">
+          <thead class="table-light">
+            <caption>Solución</caption>
+            <tr>
+              <th>A</th>
+              <th>B</th>
+              <th>R</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+  
+            <tr class="table-primary">
+  
+              <td scope="row">{{a| number}}</td>
+              <td>{{b | number}}</td> <!-- (D26-(C31*C26))/22 -->
+              <td>{{r | number}}</td>
+  
+  
+            </tr>
+  
+  
+          </tbody>
+          <tfoot>
+  
+          </tfoot>
+        </table>
+      </div>
+  
+      <div class="table-responsive">
+        <table class="table table-striped-columns
+        table-hover	
+        table-borderless
+        table-primary
+        align-middle">
+          <thead class="table-light">
+            <caption>Valores Sumatorios y totales</caption>
+            <tr>
+              <th>∑ X</th>
+              <th>∑ Y</th>
+              <th>∑ Ẍ</th>
+              <th>∑ Ÿ</th>
+              <th>∑(X⋅Y)</th>
+              <th>∑(x²)</th>
+              <th>∑(X-Ẍ)</th>
+              <th>∑(Y-Ÿ)</th>
+              <th>∑((X-Ẍ)²)</th>
+              <th>∑((Y-Ÿ)²)</th>
+              <th>∑((X-Ẍ)⋅(Y-Ÿ))</th>
+              <th>(∑ X)²</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+  
+            <tr class="table-primary">
+              <td scope="row">{{sumatoria_variable1 | number}}</td>
+              <!--<th>∑ X</th> -->
+              <td>{{sumatoria_variable2 | number}}</td>
+              <!--<th>∑ Y</th> -->
+              <td>{{promedio_1 | number}}</td>
+              <!--<th>∑ Ẍ</th> -->
+              <td>{{promedio_2 | number}}</td>
+              <!--<th>∑ Ÿ</th> -->
+              <td>{{sumatoria_variable1_X_variable2 | number}}</td>
+              <!--<th>∑(X⋅Y)</th> -->
+              <td>{{sumatoria_cuadrado_variable1 | number}}</td>
+              <!--<th>∑(x²)</th> -->
+              <td>{{sumatoria_variable1_menos_proVariable1 | number}}</td>
+              <!--<th>∑(X-Ẍ)</th> -->
+              <td>{{sumatoria_variable2_menos_proVariable2 | number}}</td>
+              <!--<th>∑(Y-Ÿ)</th> -->
+              <td>{{sumatoria_cuadrado_variable1_menos_proVariable1 | number}}</td>
+              <!--<th>∑((X-Ẍ)²)</th> -->
+              <td>{{sumatoria_cuadrado_variable2_menos_proVariable2 | number}}</td>
+              <!--<th>∑((Y-Ÿ)²)</th> -->
+              <td>{{sumatoria_variable1_menos_proVariable1_X_variable2_menos_proVariable2 | number}}</td>
+              <!--<th>∑((X-Ẍ)⋅(Y-Ÿ))</th> -->
+              <td>{{sumatoria_variable1 * sumatoria_variable1 | number}}</td><!--             <th>(∑ X)²</th> -->
+  
+            </tr>
+  
+          </tbody>
+          <tfoot>
+  
+          </tfoot>
+        </table>
+      </div>
+  
+      <div class="table-responsive">
+        <table class="table table-striped-columns
+        table-hover	
+        table-borderless
+        table-primary
+        align-middle">
+          <thead class="table-light">
+            <caption>Regresión</caption>
+            <tr>
+              <th>Año</th>
+              <th>X</th>
+              <th>Y</th>
+              <th>X⋅Y</th>
+              <th>X²</th>
+              <th>X-Ẍ</th>
+              <th>Y-Ÿ</th>
+              <th>(X-Ẍ)²</th>
+              <th>(Y-Ÿ)²</th>
+              <th>(X-Ẍ)⋅(Y-Ÿ)</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+  
+            <tr class="table-primary" *ngFor="let item of dataFormatted">
+              <td scope="row">{{item.variable_time}}</td>
+              <td>{{item.variable1 | number }}</td>
+              <td>{{item.variable2 | number }}</td>
+              <td>{{item.variable1_X_variable2 | number }}</td>
+              <td>{{item.cuadrado_variable1 | number }}</td>
+              <td>{{item.variable1_menos_proVariable1 | number }}</td>
+              <td>{{item.variable2_menos_proVariable2 | number }}</td>
+              <td>{{item.cuadrado_variable1_menos_proVariable1 | number }}</td>
+              <td>{{item.cuadrado_variable2_menos_proVariable2 | number}}</td>
+              <td>{{item.variable1_menos_proVariable1_X_variable2_menos_proVariable2 | number}}</td>
+            </tr>
+  
+          </tbody>
+          <tfoot>
+  
+          </tfoot>
+        </table>
+      </div>
+  
+</section>

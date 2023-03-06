@@ -1,0 +1,166 @@
+<section *ngIf="dataFormatted.length">
+    <div class="mb-3 mt-3 row align-items-center calc">
+        <pre>Calcula un valor para la variable Y</pre>
+        <div class="col-11 align-items-center">
+            <div class=" row align-items-center">
+                <div class="col-4">
+                    <pre for="" class="form-label"> Variable X1</pre>
+                    <input type="number" class="form-control" name="inputName" 
+                        placeholder="00"(blur)="calculateY()" [(ngModel)]="CalcColumnX1" ><!--   -->
+                </div>
+                <div class="col-4">
+                    <pre for="" class="form-label"> Variable X2</pre>
+                    <input type="number" class="form-control" name="inputName" placeholder="00" (blur)="calculateY()" [(ngModel)]="CalcColumnX2"><!-- [(ngModel)]="CalcColumnY" -->
+                </div>
+                <div class="col-4">
+                    <pre for="" class="form-label"> Variable Y</pre>
+                    <input type="number" class="form-control" name="inputName" 
+                        [readOnly]="true" placeholder="00" [(ngModel)]="CalcColumnY"><!--  -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section>
+    <div class="table-responsive">
+        <table class="table table-striped-columns
+        table-hover	
+        table-borderless
+        table-primary
+        align-middle">
+            <thead class="table-light">
+                <caption>Solución</caption>
+                <tr>
+                    <th>RY*X1</th>
+                    <th>RY*X2</th>
+                    <th>RY*X1X2</th>
+                    <th>A</th>
+                    <th>B1</th>
+                    <th>B2</th>
+                    <th>D</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+
+                <tr class="table-primary">
+                    
+                    <td scope="row">{{Raises.RVariableY_X_VariableX1| number}}</td>
+                    <td>{{Raises.RVariableY_X_VariableX2| number}}</td>
+                    <td>{{Raises.RVariableY_X_VariableX1VariableX2| number}}</td>
+                    <td>{{Resultados.A| number}}</td>
+                    <td>{{Resultados.B1| number}}</td>
+                    <td>{{Resultados.B2| number}}</td>
+                    <td>{{Resultados.D| number}}</td>
+
+                </tr>
+
+
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="table-responsive ">
+        <table class="table table-striped-columns
+        table-hover	
+        table-borderless
+        table-primary
+        align-middle">
+            <thead class="table-light">
+                <caption>Valores Sumatorios y Promedios</caption>
+                <tr>
+                    <th>Ÿ</th>
+                    <th>Ẍ1</th>
+                    <th>Ẍ2</th>
+                    <th>∑ Y</th>
+                    <th>∑ X1</th>
+                    <th>∑ X2</th>
+                    <th>∑(X1⋅Y)</th>
+                    <th>∑(X1²)</th>
+                    <th>∑(Y²)</th>
+                    <th>∑(X2⋅Y)</th>
+                    <th>∑(X2²)</th>
+                    <th>∑(X1 * x2)</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+
+                <tr class="table-primary">
+                    <td scope="row">{{promedios.PVariableY| number}}</td>
+                    <!--<th Ÿ</th> -->
+                    <td>{{promedios.PVariableX1| number}}</td>
+                    <!--<th>Ẍ1</th> -->
+                    <td>{{promedios.PVariableX2| number}}</td>
+                    <!--<th>Ẍ2</th> -->
+                    <td>{{sumatorias.SVariableY| number}}</td>
+                    <!--<th>∑ Y</th> -->
+                    <td>{{sumatorias.SVariableX1| number}}</td>
+                    <!--<th>∑ X1</th> -->
+                    <td>{{sumatorias.SVariableX2 | number}}</td>
+                    <!--<th>∑ X2</th> -->
+                    <td>{{sumatorias.SVariableX1_X_variableY| number}}</td>
+                    <!--<th>∑(X1⋅Y)</th> -->
+                    <td>{{sumatorias.SCuadrado_variableX1| number}}</td>
+                    <!--<th>∑(X1²)</th> -->
+                    <td>{{sumatorias.SCuadrado_variableY| number}}</td>
+                    <!--<th>∑(Y²)</th> -->
+                    <td>{{sumatorias.SVariableX2_X_variableY| number}}</td>
+                    <!--<th>∑(X2⋅Y)</th> -->
+                    <td>{{sumatorias.SCuadrado_variableX2| number}}</td>
+                    <!--<th>∑(X2²)</th> -->
+                    <td>{{sumatorias.SVariableX1_X_variableX2| number}}</td>
+                    <!--<th>∑(X1 * x2)</th> -->
+
+
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped-columns
+        table-hover	
+        table-borderless
+        table-primary
+        align-middle">
+            <thead class="table-light">
+                <caption>Regresión</caption>
+                <tr>
+                    <th>Y</th>
+                    <th>X1</th>
+                    <th>X2</th>
+                    <th>X1⋅Y</th>
+                    <th>X1²</th>
+                    <th>Y²</th>
+                    <th>X2⋅Y</th>
+                    <th>X2²</th>
+                    <th>X1 * x2</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+
+                <tr class="table-primary" *ngFor="let item of dataFormatted">
+                    <td scope="row">{{item.variableY}}</td>
+                    <td>{{item.variableX1 | number }}</td>
+                    <td>{{item.variableX2 | number }}</td>
+                    <td>{{item.variableX1_X_variableY | number }}</td>
+                    <td>{{item.cuadrado_variableX1 | number }}</td>
+                    <td>{{item.cuadrado_variableY | number }}</td>
+                    <td>{{item.variableX2_X_variableY | number }}</td>
+                    <td>{{item.cuadrado_variableX2 | number }}</td>
+                    <td>{{item.variableX1_X_variableX2| number }}</td>
+                </tr>
+
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+
+</section>

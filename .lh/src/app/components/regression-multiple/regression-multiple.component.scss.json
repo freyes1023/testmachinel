@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/app/components/regression-multiple/regression-multiple.component.scss",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1678127156073,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1678127312612,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n .calc{\n     padding: 2em;\n     margin-top: 1em;\n-    border-radius: 15em;\n+    border-radius: 3em;\n     border: outset;\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1678127355432,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +0,0 @@\n-.calc{\n-    padding: 2em;\n-    margin-top: 1em;\n-    border-radius: 3em;\n-    border: outset;\n-}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1678127156073,
+            "name": "Commit-0",
+            "content": ".calc{\n    padding: 2em;\n    margin-top: 1em;\n    border-radius: 15em;\n    border: outset;\n}"
+        }
+    ]
+}
