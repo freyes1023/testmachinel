@@ -81,8 +81,8 @@ export class AppComponent implements OnInit {
     this.data.every((element) => {
       const dataArray = element.split(',')
       let variable_time = parseFloat(dataArray[0])
-      let variable1 = parseFloat(dataArray[column1 - 1])
-      let variable2 = parseFloat(dataArray[column2 - 1])
+      let variable1 = isNaN(parseFloat(dataArray[column1 - 1])) ? null : parseFloat(dataArray[column1 - 1])
+      let variable2 = isNaN(parseFloat(dataArray[column2 - 1])) ? null : parseFloat(dataArray[column2 - 1])
       if (variable1 != null && variable1 != undefined && variable2 != null &&  variable2 != undefined ) {
         const object: dataSimpleI = {
           variable_time,
@@ -101,8 +101,11 @@ export class AppComponent implements OnInit {
       }
 
       if (column1 > dataArray.length || column2 > dataArray.length) {
-        alert('Valores inválidos para columnas')
-        return false
+        if (dataArray.length > 1) {
+          alert('Valores inválidos para columnas');
+          return false;
+        }
+        return true;
       }
       else return true
     })
@@ -115,9 +118,9 @@ export class AppComponent implements OnInit {
     this.dataFormattedSimple = []
     this.data.every((element) => {
       const dataArray = element.split(',')
-      let variableY = parseFloat(dataArray[column1 - 1])
-      let variableX1 = parseFloat(dataArray[column2 - 1])
-      let variableX2 = parseFloat(dataArray[column3 - 1])
+      let variableY = isNaN(parseFloat(dataArray[column1 - 1])) ? null : parseFloat(dataArray[column1 - 1])
+      let variableX1 = isNaN(parseFloat(dataArray[column2 - 1])) ? null : parseFloat(dataArray[column2 - 1])
+      let variableX2 = isNaN(parseFloat(dataArray[column3 - 1])) ? null : parseFloat(dataArray[column3 - 1])
 
       if (variableY != null && variableY != undefined && variableX1 != null &&  variableX1 != undefined && variableX2 != null && variableX2 != undefined ) {
         const object: dataMultipleI = {
@@ -133,9 +136,12 @@ export class AppComponent implements OnInit {
         }
         this.dataFormattedMultiple.push(object)
       }
-      if (column1 > dataArray.length || column2 > dataArray.length) {
-        alert('Valores inválidos para columnas')
-        return false
+      if (column1 > dataArray.length || column2 > dataArray.length|| column3 > dataArray.length) {
+        if (dataArray.length > 1) {
+          alert('Valores inválidos para columnas');
+          return false;
+        }
+        return true;
       }
       else return true
     })

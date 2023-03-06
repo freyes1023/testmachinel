@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 15,
             "patches": [
                 {
                     "date": 1678052053883,
@@ -20,6 +20,54 @@
                 {
                     "date": 1678124204289,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,8 +51,10 @@\n   Generate() {\n     const File: File = this.dataFile\n     if (File.type == 'text/csv') {\n       this.data = []\n+      this.dataFormattedSimple = []\n+      this.dataFormattedMultiple = []\n \n       File.text().then((data) => {\n         const list = data.split(\"\\n\")//.splice(0,1);\n         const initialCell = this.cellStart ? this.cellStart - 1 : 0\n"
+                },
+                {
+                    "date": 1678133371134,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -132,8 +132,12 @@\n           cuadrado_variableX2: variableX2 * variableX2\n         }\n         this.dataFormattedMultiple.push(object)\n       }\n+      console.log(column1 > dataArray.length);\n+      console.log(column2 > dataArray.length);\n+      console.log(column3 > dataArray.length);\n+      \n       if (column1 > dataArray.length || column2 > dataArray.length) {\n         alert('Valores inválidos para columnas')\n         return false\n       }\n"
+                },
+                {
+                    "date": 1678133501330,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -132,11 +132,11 @@\n           cuadrado_variableX2: variableX2 * variableX2\n         }\n         this.dataFormattedMultiple.push(object)\n       }\n-      console.log(column1 > dataArray.length);\n-      console.log(column2 > dataArray.length);\n-      console.log(column3 > dataArray.length);\n+      console.log('column1',column1, column1 > dataArray.length);\n+      console.log('column2',column2, column2 > dataArray.length);\n+      console.log('column3',column3, column3 > dataArray.length);\n       \n       if (column1 > dataArray.length || column2 > dataArray.length) {\n         alert('Valores inválidos para columnas')\n         return false\n"
+                },
+                {
+                    "date": 1678133571128,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -132,11 +132,11 @@\n           cuadrado_variableX2: variableX2 * variableX2\n         }\n         this.dataFormattedMultiple.push(object)\n       }\n-      console.log('column1',column1, column1 > dataArray.length);\n-      console.log('column2',column2, column2 > dataArray.length);\n-      console.log('column3',column3, column3 > dataArray.length);\n+      console.log('column1',dataArray,column1, column1 > dataArray.length);\n+      console.log('column2',dataArray,column2, column2 > dataArray.length);\n+      console.log('column3',dataArray,column3, column3 > dataArray.length);\n       \n       if (column1 > dataArray.length || column2 > dataArray.length) {\n         alert('Valores inválidos para columnas')\n         return false\n"
+                },
+                {
+                    "date": 1678133756055,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -114,11 +114,11 @@\n     const column3 = this.column3 ? this.column3 : 3\n     this.dataFormattedSimple = []\n     this.data.every((element) => {\n       const dataArray = element.split(',')\n-      let variableY = parseFloat(dataArray[column1 - 1])\n-      let variableX1 = parseFloat(dataArray[column2 - 1])\n-      let variableX2 = parseFloat(dataArray[column3 - 1])\n+      let variableY = isNaN(parseFloat(dataArray[column1 - 1])) ? null : parseFloat(dataArray[column1 - 1])\n+      let variableX1 = isNaN(parseFloat(dataArray[column2 - 1])) ? null : parseFloat(dataArray[column2 - 1])\n+      let variableX2 = isNaN(parseFloat(dataArray[column3 - 1])) ? null : parseFloat(dataArray[column3 - 1])\n \n       if (variableY != null && variableY != undefined && variableX1 != null &&  variableX1 != undefined && variableX2 != null && variableX2 != undefined ) {\n         const object: dataMultipleI = {\n           variableX1,\n"
+                },
+                {
+                    "date": 1678134005396,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -80,10 +80,10 @@\n     this.dataFormattedSimple = []\n     this.data.every((element) => {\n       const dataArray = element.split(',')\n       let variable_time = parseFloat(dataArray[0])\n-      let variable1 = parseFloat(dataArray[column1 - 1])\n-      let variable2 = parseFloat(dataArray[column2 - 1])\n+      let variable1 = isNaN(parseFloat(dataArray[column1 - 1])) ? null : parseFloat(dataArray[column1 - 1])\n+      let variable2 = isNaN(parseFloat(dataArray[column2 - 1])) ? null : parseFloat(dataArray[column2 - 1])\n       if (variable1 != null && variable1 != undefined && variable2 != null &&  variable2 != undefined ) {\n         const object: dataSimpleI = {\n           variable_time,\n           variable1,\n"
+                },
+                {
+                    "date": 1678134262669,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -135,8 +135,9 @@\n       }\n       console.log('column1',dataArray,column1, column1 > dataArray.length);\n       console.log('column2',dataArray,column2, column2 > dataArray.length);\n       console.log('column3',dataArray,column3, column3 > dataArray.length);\n+      console.log('dataArray.length', dataArray.length);\n       \n       if (column1 > dataArray.length || column2 > dataArray.length) {\n         alert('Valores inválidos para columnas')\n         return false\n"
+                },
+                {
+                    "date": 1678134538802,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -135,11 +135,11 @@\n       }\n       console.log('column1',dataArray,column1, column1 > dataArray.length);\n       console.log('column2',dataArray,column2, column2 > dataArray.length);\n       console.log('column3',dataArray,column3, column3 > dataArray.length);\n-      console.log('dataArray.length', dataArray.length);\n+      console.log(dataArray.length);\n       \n-      if (column1 > dataArray.length || column2 > dataArray.length) {\n+      if (column1 > dataArray.length || column2 > dataArray.length|| column3 > dataArray.length) {\n         alert('Valores inválidos para columnas')\n         return false\n       }\n       else return true\n"
+                },
+                {
+                    "date": 1678134621640,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -138,10 +138,12 @@\n       console.log('column3',dataArray,column3, column3 > dataArray.length);\n       console.log(dataArray.length);\n       \n       if (column1 > dataArray.length || column2 > dataArray.length|| column3 > dataArray.length) {\n-        alert('Valores inválidos para columnas')\n-        return false\n+        if (dataArray.lengt > 1) {\n+          alert('Valores inválidos para columnas')\n+          return false\n+        }\n       }\n       else return true\n     })\n   }\n"
+                },
+                {
+                    "date": 1678134627292,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -139,10 +139,10 @@\n       console.log(dataArray.length);\n       \n       if (column1 > dataArray.length || column2 > dataArray.length|| column3 > dataArray.length) {\n         if (dataArray.lengt > 1) {\n-          alert('Valores inválidos para columnas')\n-          return false\n+          alert('Valores inválidos para columnas');\n+          return false;\n         }\n       }\n       else return true\n     })\n"
+                },
+                {
+                    "date": 1678134657416,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -142,8 +142,9 @@\n         if (dataArray.lengt > 1) {\n           alert('Valores inválidos para columnas');\n           return false;\n         }\n+        return true;\n       }\n       else return true\n     })\n   }\n"
+                },
+                {
+                    "date": 1678134718324,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -138,9 +138,9 @@\n       console.log('column3',dataArray,column3, column3 > dataArray.length);\n       console.log(dataArray.length);\n       \n       if (column1 > dataArray.length || column2 > dataArray.length|| column3 > dataArray.length) {\n-        if (dataArray.lengt > 1) {\n+        if (dataArray.length > 1) {\n           alert('Valores inválidos para columnas');\n           return false;\n         }\n         return true;\n"
+                },
+                {
+                    "date": 1678134789449,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -100,10 +100,13 @@\n         this.dataFormattedSimple.push(object)\n       }\n \n       if (column1 > dataArray.length || column2 > dataArray.length) {\n-        alert('Valores inválidos para columnas')\n-        return false\n+        if (dataArray.length > 1) {\n+          alert('Valores inválidos para columnas');\n+          return false;\n+        }\n+        return true;\n       }\n       else return true\n     })\n   }\n@@ -132,13 +135,8 @@\n           cuadrado_variableX2: variableX2 * variableX2\n         }\n         this.dataFormattedMultiple.push(object)\n       }\n-      console.log('column1',dataArray,column1, column1 > dataArray.length);\n-      console.log('column2',dataArray,column2, column2 > dataArray.length);\n-      console.log('column3',dataArray,column3, column3 > dataArray.length);\n-      console.log(dataArray.length);\n-      \n       if (column1 > dataArray.length || column2 > dataArray.length|| column3 > dataArray.length) {\n         if (dataArray.length > 1) {\n           alert('Valores inválidos para columnas');\n           return false;\n"
                 }
             ],
             "date": 1678052053883,
