@@ -1,27 +1,19 @@
-# TestMachineL
+# Machine Learning - Regresion Lineal Simple y Multiple
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+El programa desarrollado permite realizar calculos apartir de la recopilacion de datos en un archivo .CSV
 
-## Development server
+1- Seleccionamos el metodo a procesar para regresión Lineal (Simple o Multipl)
+2- Selecionamos el archivo, tener en cuenta que solo permite cargar archivo .CSV dividido por coma.
+3- Se especifican las Columnas donde estan las variables y la fila de donde se tomaran los datos reelevantes del archivo.
+4- Click en Generar y se crean los datos para realizar la prediccion.
+5- Se solicitan los datos de la variable 1 para el metodo Simple, 2 para el metodo multiple.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![Logo](https://firebasestorage.googleapis.com/v0/b/testmachinel.appspot.com/o/Files%2FLogo%20Machine%20Learning.png?alt=media&token=59c4e37d-5e50-4728-ac32-b91e3e14ff6b)
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Authors
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- [@Freddy Reyes](https://github.com/freyes1023)
+- [@Adrian Rocha](https://github.com/AdrianJRM10)
